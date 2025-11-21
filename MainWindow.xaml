@@ -1,27 +1,32 @@
 ﻿<Window x:Class="szyfr.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="szyfr" Height="200" Width="300">
-    <Grid Margin="10">
+        Title="szyfr" Height="400" Width="700" Background="#5F9EA0">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Tekst:" Margin="0,0,10,0"/>
-        <TextBox Grid.Row="0" Grid.Column="1" x:Name="InputTextBox"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Podaj wartość klucza" Foreground="#FAEBD7" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="0" Grid.Column="0" x:Name="ShiftTextBox" Width="80" Margin="0,25,0,0" VerticalAlignment="Top"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Przesunięcie:" Margin="0,10,10,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Name="ShiftTextBox" Margin="0,10,0,0"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Podaj tekst" Foreground="#FAEBD7" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="1" Grid.Column="0" x:Name="InputTextBox" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0,25,0,0"/>
 
-        <Button Grid.Row="2" Grid.Column="1" Name="EncryptButton" Content="Szyfruj" Margin="0,10,0,0" Width="80" Click="EncryptButton_Click"/>
-        <Button Grid.Row="2" Grid.Column="0" Name="SaveButton" Content="Zapisz do pliku" Margin="0,10,0,0" Width="80" Click="SaveButton_Click"/>
-        <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Name="OutputTextBlock" Margin="0,10,0,0"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="EncryptButton" Content="Zaszyfruj" Background="#ADD8E6" Width="100" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Click="EncryptButton_Click"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Tekst zaszyfrowany" Foreground="#FAEBD7" Margin="0,0,0,5"/>
+        <Border Grid.Row="1" Grid.Column="2" BorderBrush="#FAEBD7" BorderThickness="2" CornerRadius="10" Padding="8" Margin="0,25,0,0">
+            <TextBox x:Name="OutputTextBlock" Foreground="#F0F8FF" Background="Transparent" IsReadOnly="True" TextWrapping="Wrap" AcceptsReturn="True" BorderThickness="0" VerticalScrollBarVisibility="Auto"/>
+        </Border>
+
+        <Button Grid.Row="2" Grid.Column="2" x:Name="SaveButton" Content="Zapisz szyfr w pliku" Background="#ADD8E6" Width="180" Height="35" HorizontalAlignment="Left" Margin="0,20,0,0" Click="SaveButton_Click"/>
     </Grid>
 </Window>
